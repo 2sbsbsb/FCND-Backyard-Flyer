@@ -42,7 +42,7 @@ class BackyardFlyer(Drone):
         This triggers when `MsgID.LOCAL_POSITION` is received and self.local_position contains new data
         """
         if self.flight_state == States.TAKEOFF:
-            if -1.0 * self.local_position[2] > 0.95 * self.target_position[2]:
+            if -1.0 * self.local_position[2] > 0.98 * self.target_position[2]:
                 self.all_waypoints = self.calculate_box()
                 self.waypoint_transition()
         elif self.flight_state == States.WAYPOINT:
@@ -87,7 +87,7 @@ class BackyardFlyer(Drone):
         1. Return waypoints to fly a box
         """
         print("Setting Home")
-        local_waypoints = [[10.0, 0.0, 3.0], [10.0, 10.0, 3.0], [0.0, 10.0, 3.0], [0.0, 0.0, 3.0]]
+        local_waypoints = [[20.0, 0.0, 3.0], [20.0, 20.0, 3.0], [0.0, 20.0, 3.0], [0.0, 0.0, 3.0]]
         return local_waypoints
 
 
